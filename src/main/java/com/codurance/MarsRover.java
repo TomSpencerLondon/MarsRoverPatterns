@@ -2,12 +2,16 @@ package com.codurance;
 
 public class MarsRover {
 
-  private static final String MOVE_COMMAND = "M";
   private static final String NORTH = "N";
   private static final String SOUTH = "S";
   private int x;
   private int y;
   private final String cardinal;
+
+  private final int UP = 1;
+  private final int DOWN = -1;
+  private final String COORDINATE_FORMAT = "%d %d %s";
+  private String MOVE_COMMAND = "M";
 
   public MarsRover(int x, int y, String cardinal) {
     this.x = x;
@@ -28,9 +32,13 @@ public class MarsRover {
 
   private void move() {
     if(facing(NORTH))
-      y++;
+      moveVertically(UP);
     if (facing(SOUTH))
-      y--;
+      moveVertically(DOWN);
+  }
+
+  private void moveVertically(int stepSize) {
+    y += stepSize;
   }
 
   private boolean isMove(String command) {
