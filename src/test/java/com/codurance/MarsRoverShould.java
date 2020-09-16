@@ -11,12 +11,13 @@ public class MarsRoverShould {
 
   @ParameterizedTest
   @CsvSource({
-      "1, 2, N, '1 2 N'",
-      "1, 3, N, '1 3 N'"
+      "1, 2, N, M, '1 2 N'",
+      "1, 3, N, M, '1 3 N'"
   })
-  public void return_initial_position_of_rover_without_any_command(int initialX, int initialY, String initialCardinal, String expectedCoordinate) {
-    final String emptyCommand = "";
+  public void move(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
+    final MarsRover rover = new MarsRover(initialX, initialY, initialCardinal);
+    String actualCoordinate = rover.execute(commands);
 
-    assertThat(new MarsRover(initialX,initialY,initialCardinal).execute(emptyCommand), is(expectedCoordinate));
+    assertThat(actualCoordinate, is(expectedCoordinate));
   }
 }
