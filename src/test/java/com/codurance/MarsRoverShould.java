@@ -3,6 +3,7 @@ package com.codurance;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -20,5 +21,18 @@ public class MarsRoverShould {
     String actualCoordinate = rover.execute(commands);
 
     assertThat(actualCoordinate, is(expectedCoordinate));
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+      "N, R, E"
+  })
+  void turn(String initialCardinal, String commnds, String expectedCardinal) {
+    Position initialPosition = new Position(1, 1, initialCardinal);
+    MarsRover marsRover = new MarsRover(initialPosition);
+    String actualPosition = marsRover.execute(commnds);
+    String expectedPosition = "1 1 " + expectedCardinal;
+
+    assertThat(actualPosition, is(expectedPosition));
   }
 }
