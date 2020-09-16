@@ -25,7 +25,8 @@ public class MarsRoverShould {
 
   @ParameterizedTest
   @CsvSource({
-      "N, R, E"
+      "N, R, E",
+      "N, RR, S"
   })
   void turn(String initialCardinal, String commnds, String expectedCardinal) {
     Position initialPosition = new Position(1, 1, initialCardinal);
