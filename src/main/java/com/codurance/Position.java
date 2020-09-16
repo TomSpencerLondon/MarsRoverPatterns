@@ -24,4 +24,8 @@ public class Position {
   public String cardinal() {
     return cardinal;
   }
+
+  public Position turn() {
+    return new Position(x, y, "E");
+  }
 }
