@@ -16,7 +16,7 @@ public class MarsRoverShould {
       "1, 8, S, M, '1 7 S'"
   })
   public void move(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
-    final MarsRover rover = new MarsRover(new Coordinate(initialX, initialY, initialCardinal));
+    final MarsRover rover = new MarsRover(new Position(initialX, initialY, initialCardinal));
     String actualCoordinate = rover.execute(commands);
 
     assertThat(actualCoordinate, is(expectedCoordinate));

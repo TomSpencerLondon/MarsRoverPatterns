@@ -1,23 +1,23 @@
 package com.codurance;
 
-public class Coordinate {
+public class Position {
 
   private final int x;
   private final int y;
   private final String cardinal;
 
-  public Coordinate(int x, int y, String cardinal) {
+  public Position(int x, int y, String cardinal) {
     this.x = x;
     this.y = y;
     this.cardinal = cardinal;
   }
 
 
-  public int X() {
+  public int x() {
     return x;
   }
 
-  public int Y() {
+  public int y() {
     return y;
   }
 
