@@ -50,6 +50,6 @@ public class MarsRover {
   }
 
   private String formatCoordinate() {
-    return String.format("%d %d %s", x, y, cardinal);
+    return String.format(COORDINATE_FORMAT, x, y, cardinal);
   }
 }
