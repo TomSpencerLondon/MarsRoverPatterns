@@ -15,18 +15,26 @@ public class MarsRover {
     this.cardinal = cardinal;
   }
 
-  public String execute(String commands) {
-    String[] individualCommands = commands.split("");
+  public String execute(String input) {
+    String[] commands = input.split("");
     
-    for (String command : individualCommands){
-      if (command.equals(MOVE_COMMAND))
-        if(facing(NORTH))
-          y++;
-        if (facing(SOUTH))
-          y--;
+    for (String command : commands){
+      if (isMove(command))
+        move();
     }
 
     return formatCoordinate();
+  }
+
+  private void move() {
+    if(facing(NORTH))
+      y++;
+    if (facing(SOUTH))
+      y--;
+  }
+
+  private boolean isMove(String command) {
+    return command.equals(MOVE_COMMAND);
   }
 
   private boolean facing(String direction) {
