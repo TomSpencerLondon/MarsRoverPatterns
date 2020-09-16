@@ -6,6 +6,7 @@ public class MarsRover {
   private static final String SOUTH = "S";
   private static final String EAST = "E";
   private static final int RIGHT = 1;
+  private final Coordinate coordinate;
   private int x;
   private int y;
   private final String cardinal;
@@ -16,10 +17,11 @@ public class MarsRover {
   private String MOVE_COMMAND = "M";
   private final String INTO_CHARACTERS = "";
 
-  public MarsRover(int x, int y, String cardinal) {
-    this.x = x;
-    this.y = y;
-    this.cardinal = cardinal;
+  public MarsRover(Coordinate coordinate) {
+    this.x = coordinate.X();
+    this.y = coordinate.Y();
+    this.cardinal = coordinate.cardinal();
+    this.coordinate = coordinate;
   }
 
   public String execute(String input) {
