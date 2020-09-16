@@ -11,8 +11,10 @@ public class MarsRoverShould {
 
   @ParameterizedTest
   @CsvSource({
-      "1, 2, N, M, '1 2 N'",
-      "1, 3, N, M, '1 3 N'"
+      "1, 2, N, M, '1 3 N'",
+      "1, 3, N, MM, '1 5 N'",
+      "1, 3, N, MMMMM, '1 8 N'",
+      "1, 8, S, M, '1 7 S'"
   })
   public void move(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
     final MarsRover rover = new MarsRover(initialX, initialY, initialCardinal);

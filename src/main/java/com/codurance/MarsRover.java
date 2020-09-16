@@ -2,8 +2,9 @@ package com.codurance;
 
 public class MarsRover {
 
-  private final int x;
-  private final int y;
+  private static final String MOVE_COMMAND = "M";
+  private int x;
+  private int y;
   private final String cardinal;
 
   public MarsRover(int x, int y, String cardinal) {
@@ -13,6 +14,16 @@ public class MarsRover {
   }
 
   public String execute(String commands) {
+    String[] individualCommands = commands.split("");
+    
+    for (String command : individualCommands){
+      if (command.equals(MOVE_COMMAND))
+        if(cardinal.equals("N"))
+          y++;
+        if (cardinal.equals("S"))
+          y--;
+    }
+
     return formatCoordinate();
   }
 
