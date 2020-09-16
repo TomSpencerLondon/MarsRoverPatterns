@@ -3,6 +3,8 @@ package com.codurance;
 public class MarsRover {
 
   private static final String MOVE_COMMAND = "M";
+  private static final String NORTH = "N";
+  private static final String SOUTH = "S";
   private int x;
   private int y;
   private final String cardinal;
@@ -18,13 +20,17 @@ public class MarsRover {
     
     for (String command : individualCommands){
       if (command.equals(MOVE_COMMAND))
-        if(cardinal.equals("N"))
+        if(facing(NORTH))
           y++;
-        if (cardinal.equals("S"))
+        if (facing(SOUTH))
           y--;
     }
 
     return formatCoordinate();
+  }
+
+  private boolean facing(String direction) {
+    return this.cardinal.equals(direction);
   }
 
   private String formatCoordinate() {
