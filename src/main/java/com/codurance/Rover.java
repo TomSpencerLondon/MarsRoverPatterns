@@ -1,6 +1,6 @@
 package com.codurance;
 
-import com.codurance.directions.Cardinal;
+import com.codurance.directions.Direction;
 import com.codurance.directions.East;
 import com.codurance.directions.North;
 import com.codurance.directions.South;
@@ -9,12 +9,12 @@ import com.codurance.directions.West;
 public class Rover {
   private final int x;
   private final int y;
-  private final Cardinal cardinal;
+  private final Direction direction;
 
-  public Rover(int x, int y, Cardinal cardinal) {
+  public Rover(int x, int y, Direction direction) {
     this.x = x;
     this.y = y;
-    this.cardinal = cardinal;
+    this.direction = direction;
   }
 
 
@@ -27,21 +27,21 @@ public class Rover {
   }
 
   public Rover move() {
-    return cardinal.move(x, y);
+    return direction.move(x, y);
   }
 
   public String cardinal() {
-    return cardinal.name();
+    return direction.name();
   }
 
   public Rover turn() {
-    if (cardinal.equals(new North()))
+    if (direction.equals(new North()))
       return new Rover(x, y, new East());
-    if (cardinal.equals(new East()))
+    if (direction.equals(new East()))
       return new Rover(x, y, new South());
-    if (cardinal.equals(new South()))
+    if (direction.equals(new South()))
       return new Rover(x, y, new West());
-    if (cardinal.equals(new West()))
+    if (direction.equals(new West()))
       return new Rover(x, y, new North());
     return this;
   }

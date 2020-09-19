@@ -5,18 +5,18 @@ import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode
 
 import com.codurance.Rover;
 
-public class West implements Cardinal {
+public class West implements Direction {
 
   String name = "W";
   private final int stepWise = -1;
 
   @Override
-  public Cardinal left() {
+  public Direction left() {
     return new South();
   }
 
   @Override
-  public Cardinal right() {
+  public Direction right() {
     return new North();
   }
 

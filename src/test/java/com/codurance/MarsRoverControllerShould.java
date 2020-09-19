@@ -3,7 +3,7 @@ package com.codurance;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-import com.codurance.directions.Cardinal;
+import com.codurance.directions.Direction;
 import com.codurance.directions.East;
 import com.codurance.directions.North;
 import com.codurance.directions.South;
@@ -53,7 +53,7 @@ public class MarsRoverControllerShould {
     assertThat(actualCoordinate, is(expectedCoordinate));
   }
 
-  private Cardinal cardinalFor(String cardinal) {
+  private Direction cardinalFor(String cardinal) {
     if (cardinal.equals("N"))
       return new North();
     if (cardinal.equals("E"))
