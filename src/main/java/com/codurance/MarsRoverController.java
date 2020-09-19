@@ -1,5 +1,7 @@
 package com.codurance;
 
+import com.codurance.commands.CommandFactory;
+
 public class MarsRoverController {
 
   private Rover rover;
@@ -15,25 +17,27 @@ public class MarsRoverController {
 
   public String execute(String input) {
     for (String command : commandsFrom(input)){
+      if (isTurnRight(command))
+        rover = rover.right();
+      if (isTurnLeft(command))
+        rover = rover.left();
       if (isMove(command))
-        rover = move();
-      if (isTurn(command))
-        rover = rover.turn();
+        rover = new CommandFactory(rover).commandFrom(command).execute();
     }
 
     return formatCoordinate();
   }
 
-  private boolean isTurn(String command) {
-    return RIGHT_COMMAND.equals(command) || LEFT_COMMAND.equals(command);
+  private boolean isTurnRight(String command) {
+    return RIGHT_COMMAND.equals(command);
+  }
+
+  private boolean isTurnLeft(String command) {
+    return LEFT_COMMAND.equals(command);
   }
 
   private String[] commandsFrom(String input) {
     return input.split(INTO_CHARACTERS);
-  }
-
-  private Rover move() {
-    return this.rover.move();
   }
 
   private boolean isMove(String command) {
@@ -41,6 +45,6 @@ public class MarsRoverController {
   }
 
   private String formatCoordinate() {
-    return String.format(COORDINATE_FORMAT, rover.x(), rover.y(), rover.cardinal());
+    return String.format(COORDINATE_FORMAT, rover.x(), rover.y(), rover.direction());
   }
 }

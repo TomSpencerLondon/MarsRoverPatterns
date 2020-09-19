@@ -30,11 +30,11 @@ public class Rover {
     return direction.move(x, y);
   }
 
-  public String cardinal() {
+  public String direction() {
     return direction.name();
   }
 
-  public Rover turn() {
+  public Rover right(){
     if (direction.equals(new North()))
       return new Rover(x, y, new East());
     if (direction.equals(new East()))
@@ -42,6 +42,18 @@ public class Rover {
     if (direction.equals(new South()))
       return new Rover(x, y, new West());
     if (direction.equals(new West()))
+      return new Rover(x, y, new North());
+    return this;
+  }
+
+  public Rover left() {
+    if (direction.equals(new North()))
+      return new Rover(x, y, new West());
+    if (direction.equals(new West()))
+      return new Rover(x, y, new South());
+    if (direction.equals(new South()))
+      return new Rover(x, y, new East());
+    if (direction.equals(new East()))
       return new Rover(x, y, new North());
     return this;
   }
