@@ -1,10 +1,6 @@
 package com.codurance;
 
 import com.codurance.directions.Direction;
-import com.codurance.directions.East;
-import com.codurance.directions.North;
-import com.codurance.directions.South;
-import com.codurance.directions.West;
 
 public class Rover {
   private final int x;
