@@ -3,6 +3,11 @@ package com.codurance;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+import com.codurance.directions.Cardinal;
+import com.codurance.directions.East;
+import com.codurance.directions.North;
+import com.codurance.directions.South;
+import com.codurance.directions.West;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -16,7 +21,7 @@ public class MarsRoverControllerShould {
       "1, 8, S, M, '1 7 S'"
   })
   public void move(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
-    final MarsRoverController rover = new MarsRoverController(new Rover(initialX, initialY, initialCardinal));
+    final MarsRoverController rover = new MarsRoverController(new Rover(initialX, initialY, cardinalFor(initialCardinal)));
     String actualCoordinate = rover.execute(commands);
 
     assertThat(actualCoordinate, is(expectedCoordinate));
@@ -28,7 +33,7 @@ public class MarsRoverControllerShould {
       "N, RR, S"
   })
   void turn(String initialCardinal, String commnds, String expectedCardinal) {
-    Rover initialRover = new Rover(1, 1, initialCardinal);
+    Rover initialRover = new Rover(1, 1, cardinalFor(initialCardinal));
     MarsRoverController marsRover = new MarsRoverController(initialRover);
     String actualPosition = marsRover.execute(commnds);
     String expectedPosition = "1 1 " + expectedCardinal;
@@ -41,10 +46,21 @@ public class MarsRoverControllerShould {
       "1, 2, N, LMLMLMLMM, '1 3 N'"
   })
   void move_and_turn(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
-    Rover initialRover = new Rover(initialX, initialY, initialCardinal);
+    Rover initialRover = new Rover(initialX, initialY, cardinalFor(initialCardinal));
     MarsRoverController marsRover = new MarsRoverController(initialRover);
 
     String actualCoordinate = marsRover.execute(commands);
     assertThat(actualCoordinate, is(expectedCoordinate));
+  }
+
+  private Cardinal cardinalFor(String cardinal) {
+    if (cardinal.equals("N"))
+      return new North();
+    if (cardinal.equals("E"))
+      return new East();
+    if (cardinal.equals("S"))
+      return new South();
+    return new West();
+
   }
 }

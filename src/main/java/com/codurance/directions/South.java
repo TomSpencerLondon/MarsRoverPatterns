@@ -3,9 +3,11 @@ package com.codurance.directions;
 import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
 
-public class South implements Cardinal {
+import com.codurance.Rover;
 
+public class South implements Cardinal {
   String name = "S";
+  private final int stepWise = -1;
 
   @Override
   public Cardinal left() {
@@ -15,6 +17,11 @@ public class South implements Cardinal {
   @Override
   public Cardinal right() {
     return new West();
+  }
+
+  @Override
+  public Rover move(int x, int y) {
+    return new Rover(x, y + stepWise, this);
   }
 
   @Override

@@ -1,7 +1,9 @@
 package com.codurance.directions;
+import com.codurance.Rover;
 
 public interface Cardinal {
-  public Cardinal left();
-  public Cardinal right();
-  public String name();
+  Cardinal left();
+  Cardinal right();
+  Rover move(int x, int y);
+  String name();
 }
