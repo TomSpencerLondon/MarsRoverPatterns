@@ -5,19 +5,21 @@ import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode
 
 public class West implements Cardinal {
 
+  String name = "W";
+
   @Override
   public Cardinal left() {
-    return null;
+    return new South();
   }
 
   @Override
   public Cardinal right() {
-    return null;
+    return new North();
   }
 
   @Override
   public String name() {
-    return null;
+    return name;
   }
 
   @Override
