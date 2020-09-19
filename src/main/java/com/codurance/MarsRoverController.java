@@ -15,11 +15,15 @@ public class MarsRoverController {
     for (String command : commandsFrom(input)){
       if (isMove(command))
         rover = move();
-      if (command.equals("R"))
+      if (isTurn(command))
         rover = rover.turn();
     }
 
     return formatCoordinate();
+  }
+
+  private boolean isTurn(String command) {
+    return ("R").equals(command) || ("L").equals(command);
   }
 
   private String[] commandsFrom(String input) {

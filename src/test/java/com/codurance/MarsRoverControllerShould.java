@@ -40,8 +40,8 @@ public class MarsRoverControllerShould {
   @CsvSource({
       "1, 2, N, LMLMLMLMM, '1 3 N'"
   })
-  void move_and_turn(int initialX, int initalY, String initialCardinal, String commands, String expectedCoordinate) {
-    Rover initialRover = new Rover(initialX, initalY, initialCardinal);
+  void move_and_turn(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
+    Rover initialRover = new Rover(initialX, initialY, initialCardinal);
     MarsRoverController marsRover = new MarsRoverController(initialRover);
 
     String actualCoordinate = marsRover.execute(commands);
