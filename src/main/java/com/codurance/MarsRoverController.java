@@ -4,8 +4,10 @@ public class MarsRoverController {
 
   private Rover rover;
   private final String COORDINATE_FORMAT = "%d %d %s";
-  private String MOVE_COMMAND = "M";
+  private final String MOVE_COMMAND = "M";
   private final String INTO_CHARACTERS = "";
+  private final String RIGHT_COMMAND = "R";
+  private final String LEFT_COMMAND = "L";
 
   public MarsRoverController(Rover rover) {
     this.rover = rover;
@@ -23,7 +25,7 @@ public class MarsRoverController {
   }
 
   private boolean isTurn(String command) {
-    return ("R").equals(command) || ("L").equals(command);
+    return RIGHT_COMMAND.equals(command) || LEFT_COMMAND.equals(command);
   }
 
   private String[] commandsFrom(String input) {
