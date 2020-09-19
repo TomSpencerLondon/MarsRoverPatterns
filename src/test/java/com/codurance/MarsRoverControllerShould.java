@@ -20,8 +20,8 @@ public class MarsRoverControllerShould {
       "1, 3, N, MMMMM, '1 8 N'",
       "1, 8, S, M, '1 7 S'"
   })
-  public void move(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
-    final MarsRoverController rover = new MarsRoverController(new Rover(initialX, initialY, cardinalFor(initialCardinal)));
+  public void move(int initialX, int initialY, String initialDirection, String commands, String expectedCoordinate) {
+    final MarsRoverController rover = new MarsRoverController(new Rover(initialX, initialY, directionFor(initialDirection)));
     String actualCoordinate = rover.execute(commands);
 
     assertThat(actualCoordinate, is(expectedCoordinate));
@@ -33,7 +33,7 @@ public class MarsRoverControllerShould {
       "N, RR, S"
   })
   void turn(String initialCardinal, String commnds, String expectedCardinal) {
-    Rover initialRover = new Rover(1, 1, cardinalFor(initialCardinal));
+    Rover initialRover = new Rover(1, 1, directionFor(initialCardinal));
     MarsRoverController marsRover = new MarsRoverController(initialRover);
     String actualPosition = marsRover.execute(commnds);
     String expectedPosition = "1 1 " + expectedCardinal;
@@ -46,14 +46,14 @@ public class MarsRoverControllerShould {
       "1, 2, N, LMLMLMLMM, '1 3 N'"
   })
   void move_and_turn(int initialX, int initialY, String initialCardinal, String commands, String expectedCoordinate) {
-    Rover initialRover = new Rover(initialX, initialY, cardinalFor(initialCardinal));
+    Rover initialRover = new Rover(initialX, initialY, directionFor(initialCardinal));
     MarsRoverController marsRover = new MarsRoverController(initialRover);
 
     String actualCoordinate = marsRover.execute(commands);
     assertThat(actualCoordinate, is(expectedCoordinate));
   }
 
-  private Direction cardinalFor(String cardinal) {
+  private Direction directionFor(String cardinal) {
     if (cardinal.equals("N"))
       return new North();
     if (cardinal.equals("E"))
