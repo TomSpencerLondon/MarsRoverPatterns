@@ -7,18 +7,9 @@ import com.codurance.directions.South;
 import com.codurance.directions.West;
 
 public class Rover {
-
-  private static final String NORTH = "N";
-  private static final String SOUTH = "S";
-  private static final String EAST = "E";
-  private static final String WEST = "W";
-  private static final int RIGHT = 1;
-  private static final int LEFT = -1;
   private final int x;
   private final int y;
   private final Cardinal cardinal;
-  private final int UP = 1;
-  private final int DOWN = -1;
 
   public Rover(int x, int y, Cardinal cardinal) {
     this.x = x;
@@ -37,18 +28,6 @@ public class Rover {
 
   public Rover move() {
     return cardinal.move(x, y);
-  }
-
-  private boolean facing(String direction) {
-    return this.cardinal.equals(direction);
-  }
-
-  private Rover moveHorizontally(int stepSize) {
-    return new Rover(x + stepSize, y, this.cardinal);
-  }
-
-  private Rover moveVertically(int stepSize) {
-    return new Rover(x, y + stepSize, this.cardinal);
   }
 
   public String cardinal() {
