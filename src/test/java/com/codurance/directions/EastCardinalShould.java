@@ -12,4 +12,10 @@ public class EastCardinalShould {
     Cardinal result = new East().right();
     assertThat(result, is(new South()));
   }
+
+  @Test
+  void be_facing_north_when_turned_left() {
+    Cardinal result = new East().left();
+    assertThat(result, is(new North()));
+  }
 }
