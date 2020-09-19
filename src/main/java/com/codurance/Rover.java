@@ -35,26 +35,10 @@ public class Rover {
   }
 
   public Rover right(){
-    if (direction.equals(new North()))
-      return new Rover(x, y, new East());
-    if (direction.equals(new East()))
-      return new Rover(x, y, new South());
-    if (direction.equals(new South()))
-      return new Rover(x, y, new West());
-    if (direction.equals(new West()))
-      return new Rover(x, y, new North());
-    return this;
+    return new Rover(x, y, direction.right());
   }
 
   public Rover left() {
-    if (direction.equals(new North()))
-      return new Rover(x, y, new West());
-    if (direction.equals(new West()))
-      return new Rover(x, y, new South());
-    if (direction.equals(new South()))
-      return new Rover(x, y, new East());
-    if (direction.equals(new East()))
-      return new Rover(x, y, new North());
-    return this;
+    return new Rover(x, y, direction.left());
   }
 }
