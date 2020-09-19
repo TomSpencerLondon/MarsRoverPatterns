@@ -17,14 +17,11 @@ public class CommandFactory {
   }
 
   private void initializeCommands(Rover rover) {
-    commands = new HashMap<>(){
-      {
-        put(MOVE, new MoveCommand(rover));
-        put(LEFT, new MoveCommand(rover));
-        put(RIGHT, new MoveCommand(rover));
-        put(EMPTY, new MoveCommand(rover));
-      }
-    };
+    commands = new HashMap<>();
+    commands.put(MOVE, new MoveCommand(rover));
+    commands.put(LEFT, new MoveCommand(rover));
+    commands.put(RIGHT, new MoveCommand(rover));
+    commands.put(EMPTY, new MoveCommand(rover));
   }
 
   public Command commandFrom(String command){
