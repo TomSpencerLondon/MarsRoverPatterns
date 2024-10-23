@@ -7,22 +7,30 @@ import com.codurance.Rover;
 
 public class West implements Direction {
 
+  private final int maxDistance;
   String name = "W";
   private final int stepWise = -1;
 
+  public West(int maxDistance) {
+    this.maxDistance = maxDistance;
+  }
+
   @Override
   public Direction left() {
-    return new South();
+    return new South(this.maxDistance);
   }
 
   @Override
   public Direction right() {
-    return new North();
+    return new North(this.maxDistance);
   }
 
   @Override
   public Rover move(int x, int y) {
-    return new Rover(x + stepWise, y, this);
+    return new Rover(
+            (x > 0) ? x + stepWise :
+                    this.maxDistance + stepWise,
+            y, this);
   }
 
   @Override

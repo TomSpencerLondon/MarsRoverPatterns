@@ -6,22 +6,31 @@ import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode
 import com.codurance.Rover;
 
 public class South implements Direction {
+  private final int maxDistance;
   String name = "S";
   private final int stepWise = -1;
 
+  public South(int maxDistance) {
+    this.maxDistance = maxDistance;
+  }
+
   @Override
   public Direction left() {
-    return new East();
+    return new East(10);
   }
 
   @Override
   public Direction right() {
-    return new West();
+    return new West(10);
   }
 
   @Override
   public Rover move(int x, int y) {
-    return new Rover(x, y + stepWise, this);
+
+    return new Rover(x,
+            (y > 0) ? y + stepWise :
+            this.maxDistance + stepWise,
+            this);
   }
 
   @Override

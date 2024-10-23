@@ -9,13 +9,13 @@ public class WestDirectionShould {
 
   @Test
   void be_facing_north_when_turned_right() {
-    Direction result = new West().right();
-    assertThat(result, is(new North()));
+    Direction result = new West(10).right();
+    assertThat(result, is(new North(10)));
   }
 
   @Test
   void be_facing_south_when_turned_left() {
-    Direction result = new West().left();
-    assertThat(result, is(new South()));
+    Direction result = new West(10).left();
+    assertThat(result, is(new South(10)));
   }
 }
